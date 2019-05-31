@@ -13,7 +13,8 @@ class TasksController extends Controller
      */
     public function index()
     {
-        //
+        $tasks = Task::all();
+        return view('tasks.index', compact('tasks'));
     }
 
     /**
@@ -23,7 +24,7 @@ class TasksController extends Controller
      */
     public function create()
     {
-        //
+        return view('tasks.create');
     }
 
     /**
@@ -34,7 +35,8 @@ class TasksController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Task::create($request->all());
+        return redirect()->route('tasks.index');
     }
 
     /**
